@@ -115,9 +115,22 @@ type TodoItemProps = {
 function TodoItem({ todo, dispatch }: TodoItemProps) {
   const [canEdit, setCanEdit] = useState(false);
   const [newText, setNewText] = useState(todo.text);
+  const [checked, setChecked] = useState(todo.done);
 
   return (
     <div>
+      <input type="checkbox" defaultChecked={checked} onChange={() => {
+        setChecked(!checked);
+        dispatch({
+          type: 'edit',
+          id: todo.id,
+          text: newText,
+          done: !checked
+        });
+        
+
+      }} />
+
       {canEdit ? (
         <>
           <input
