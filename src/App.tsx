@@ -10,11 +10,16 @@ function App() {
   const id = React.useId();
 
   // Try changing some of these values!
-  const boxes: Box[] = [
-    { flex: boxWidth, background: 'hsl(345deg 100% 50%)' },
-    { flex: 3, background: 'hsl(260deg 100% 40%)' },
-    { flex: 1, background: 'hsl(50deg 100% 60%)' },
-  ];
+  const boxes = React.useMemo(() => {
+    const boxes: Box[] = [
+      { flex: boxWidth, background: 'hsl(345deg 100% 50%)' },
+      { flex: 3, background: 'hsl(260deg 100% 40%)' },
+      { flex: 1, background: 'hsl(50deg 100% 60%)' },
+    ];
+
+    return boxes;
+
+  }, [boxWidth])
 
   return (
     <>
